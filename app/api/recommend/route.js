@@ -51,8 +51,8 @@ export async function POST(req) {
       任務：根據以下真實評論，分析這家餐廳值不值得去。
       餐廳：${selectedPlace.name} (${selectedPlace.rating}分)
       評論：${reviewsText || "無詳細評論"}
-      請列出：1.【👍 亮點】 2.【⚠️ 注意】。
-      最後給短評。繁體中文，不用加一堆**或引號加重口氣，全文在150字內。
+      請列出：1.【👍 亮點】 2.【⚠️ 注意】 3.【💬 結論】
+      繁體中文，不用加一堆**或引號加重口氣，全文在150字內。
     `
 
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-09-2025" })

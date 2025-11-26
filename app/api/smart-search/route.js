@@ -62,7 +62,8 @@ export async function POST(req) {
       1. 為什麼這家店符合他的願望？(例如：你想吃辣，這家的麻辣鍋很出名)
       2. 提醒一個可能的缺點（如果有，例如：人很多要排隊）。
       語氣誠實親切。
-      **請將總字數嚴格控制在 150 字以內。**
+      用繁體中文，不用加一堆**或上下引號增強語氣
+      **請將總字數嚴格控制在 200 字以內。**
     `
     const reasonResult = await model.generateContent(reasonPrompt)
 
