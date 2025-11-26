@@ -364,7 +364,7 @@ export default function Home() {
                       type="password" 
                       value={apiKeys.google}
                       onChange={(e) => handleSaveKey('google', e.target.value)}
-                      placeholder="請輸入 AIza 開頭的金鑰"
+                      placeholder="請輸入API金鑰"
                       className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-orange-500 transition-colors text-gray-700 font-medium"
                     />
                     <button 
@@ -396,7 +396,7 @@ export default function Home() {
                       type="password" 
                       value={apiKeys.gemini}
                       onChange={(e) => handleSaveKey('gemini', e.target.value)}
-                      placeholder="請輸入 AIza 開頭的金鑰"
+                      placeholder="請輸入API金鑰"
                       className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-orange-500 transition-colors text-gray-700 font-medium"
                     />
                     <button 
@@ -495,10 +495,10 @@ export default function Home() {
                  </span>
                  <div className="text-right flex flex-col items-end gap-1">
                     <div className="flex items-center gap-1 text-xs font-bold text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
-                       <Footprints size={12} /> 走 {walkTime} 分
+                       <Footprints size={12} /> 走路 {walkTime} 分
                     </div>
                     <div className="flex items-center gap-1 text-xs font-bold text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
-                       <Bike size={12} /> 騎 {rideTime} 分
+                       <Bike size={12} /> 騎車 {rideTime} 分
                     </div>
                  </div>
               </div>

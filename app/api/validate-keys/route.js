@@ -1,15 +1,18 @@
 import { NextResponse } from 'next/server'
 import { GoogleGenerativeAI } from '@google/generative-ai'
+import { getValidKey } from '../../lib/keys'
 
 export async function POST(req) {
   try {
     const { type, key } = await req.json()
+    
+    // 使用工具轉換 Key (如果是密語，這裡會變成真 Key)
+    const finalKey = getValidKey(key, type)
 
-    if (!key) return NextResponse.json({ success: false, error: "未輸入 Key" })
+    if (!finalKey) return NextResponse.json({ success: false, error: "無效的金鑰或密語" })
 
     if (type === 'google') {
-      // 測試 Google Maps API (試搜尋 "Test")
-      const url = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Test&inputtype=textquery&fields=name&key=${key}`
+      const url = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Test&inputtype=textquery&fields=name&key=${finalKey}`
       const res = await fetch(url)
       const data = await res.json()
       
@@ -20,10 +23,8 @@ export async function POST(req) {
       }
     } 
     else if (type === 'gemini') {
-      // 測試 Gemini API (使用最新的 2.5 Flash Preview)
       try {
-        const genAI = new GoogleGenerativeAI(key)
-        // 修正：改用與其他 API 一致的模型版本，避免 404
+        const genAI = new GoogleGenerativeAI(finalKey)
         const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-09-2025" })
         await model.generateContent("Hi")
         return NextResponse.json({ success: true })
