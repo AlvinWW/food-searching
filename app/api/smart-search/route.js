@@ -63,7 +63,7 @@ export async function POST(req) {
       2. 提醒一個可能的缺點（如果有，例如：人很多要排隊）。
       語氣誠實親切。
       用繁體中文，不用加一堆**或上下引號增強語氣
-      **請將總字數嚴格控制在 200 字以內。**
+      **請將總字數嚴格控制在 200 字以內並且在最後面不要顯示總字數**
     `
     const reasonResult = await model.generateContent(reasonPrompt)
 
